@@ -1,0 +1,65 @@
+* {
+    margin: 0;
+    box-sizing: border-box;
+}
+
+@font-face {
+    font-family: Montserrat;
+    src: url("./fonts/Montserrat/Montserrat-VariableFont_wght.ttf");
+}
+
+@font-face {
+    font-family: Manrope;
+    src: url("./fonts/Manrope/Manrope-VariableFont_wght.ttf");
+}
+
+.honeycomb {
+    --s: 150px;
+    /* contrôle la taille */
+    --g: 10px;
+    /* contrôle de l'espacement */
+    display: grid;
+}
+
+.honeycomb>img {
+    grid-area: 1/1;
+    width: var(--s);
+    aspect-ratio: 1.15;
+    object-fit: cover;
+    clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+    transform: translate(var(--_x, 0), var(--_y, 0));
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    margin: 300px;
+}
+
+.honeycomb>img:nth-child(1) {
+    --_y: calc(-100% - var(--g));
+}
+
+.honeycomb>img:nth-child(7) {
+    --_y: calc(100% + var(--g));
+}
+
+.honeycomb>img:nth-child(3),
+.honeycomb>img:nth-child(5) {
+    --_x: calc(-75% - 0.87 * var(--g));
+}
+
+.honeycomb>img:nth-child(4),
+.honeycomb>img:nth-child(6) {
+    --_x: calc(75% + 0.87 * var(--g));
+}
+
+.honeycomb>img:nth-child(3),
+.honeycomb>img:nth-child(4) {
+    --_y: calc(-50% - 0.5 * var(--g));
+}
+
+.honeycomb>img:nth-child(5),
+.honeycomb>img:nth-child(6) {
+    --_y: calc(50% + 0.5 * var(--g));
+}
