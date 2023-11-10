@@ -13,53 +13,40 @@
     src: url("./fonts/Manrope/Manrope-VariableFont_wght.ttf");
 }
 
-.honeycomb {
-    --s: 150px;
-    /* contrôle la taille */
-    --g: 10px;
-    /* contrôle de l'espacement */
-    display: grid;
-}
-
-.honeycomb>img {
-    grid-area: 1/1;
-    width: var(--s);
-    aspect-ratio: 1.15;
-    object-fit: cover;
-    clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
-    transform: translate(var(--_x, 0), var(--_y, 0));
-}
 
 body {
     display: flex;
     justify-content: center;
-    margin: 300px;
+    margin: 100px;
 }
 
-.honeycomb>img:nth-child(1) {
-    --_y: calc(-100% - var(--g));
+.button {
+    height: 50px;
+    width: 100px;
+    border: 1px outset black;
+    border-radius: 20px;
+    box-shadow: 5px 5px 10px;
+    background-color: aquamarine;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    padding: 5px;
+    top: 10px;
 }
 
-.honeycomb>img:nth-child(7) {
-    --_y: calc(100% + var(--g));
+.button:hover {
+    cursor:pointer
 }
 
-.honeycomb>img:nth-child(3),
-.honeycomb>img:nth-child(5) {
-    --_x: calc(-75% - 0.87 * var(--g));
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, 200px);
+    grid-template-rows: repeat(3, 200px);
+    gap: 10px;
 }
 
-.honeycomb>img:nth-child(4),
-.honeycomb>img:nth-child(6) {
-    --_x: calc(75% + 0.87 * var(--g));
-}
-
-.honeycomb>img:nth-child(3),
-.honeycomb>img:nth-child(4) {
-    --_y: calc(-50% - 0.5 * var(--g));
-}
-
-.honeycomb>img:nth-child(5),
-.honeycomb>img:nth-child(6) {
-    --_y: calc(50% + 0.5 * var(--g));
+img {
+    height: 200px;
+    width: 200px;
 }

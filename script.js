@@ -31,25 +31,58 @@ import {
 
 let body = document.querySelector("body")
 
-let ruche = document.querySelector(".honeycomb")
+let grid = document.querySelector(".grid")
 
-/* Boucle pour appeler 7 fois l'API et générer 7 images a intégrer à la grille */
+let baliseImg;
 
-for (let i = 0; i < 7; i++) {
+/* Création du bouton qui déclenchera la requête vers l'API */
 
-    /* Récupération de la réponse de l'API (sous forme d'une chaine de caractéres) */
+let catButton = document.createElement("div")
+catButton.classList.add("button")
+catButton.textContent = "Générons des chats !"
+body.appendChild(catButton)
+console.log(grid)
 
-    let catImg = await get_cat_object()
-  
-    let result = JSON.parse(catImg)
+catButton.addEventListener("click", async () => {
 
-    /* Pour chaque image, créer une balise img, et y attribuer comme src l'url récupérée de l'API */
+    /* Boucle pour appeler 7 fois l'API et générer 7 images a intégrer à la grille */
 
-    let baliseImg = document.createElement("img")
-    baliseImg.setAttribute("src", result[0].url)
-    ruche.appendChild(baliseImg)
+    for (let i = 0; i < 9; i++) {
 
-}
+        let baliseImg
+        /* Récupération de la réponse de l'API (sous forme d'une chaine de caractéres) */
+
+        let catImg = await get_cat_object()
+
+        let result = JSON.parse(catImg)
+
+
+        if (!document.getElementById("id" + i)) {
+
+            
+            baliseImg = document.createElement("img")
+            baliseImg.id = "id" + i.toString();
+            baliseImg.src = result[0].url;
+            grid.appendChild(baliseImg)
+
+        } else {
+
+           
+            baliseImg = document.getElementById("id" + i.toString())
+            baliseImg.src = result[0].url
+            //   baliseImg.setAttribute("id", i)
+            grid.appendChild(baliseImg)
+            console.log(baliseImg)
+
+        }
+
+    }
+
+})
+
+/* Création d'un écouteur d'événements sur une image de la grille pour stocker l'url en abse de données */
+
+
 
 //let p = ajouterUnObjet(objet, "test");
 
