@@ -41,7 +41,7 @@ let catButton = document.createElement("div")
 catButton.classList.add("button")
 catButton.textContent = "Générons des chats !"
 body.appendChild(catButton)
-console.log(grid)
+console.log(catButton)
 
 catButton.addEventListener("click", async () => {
 
