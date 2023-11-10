@@ -40,18 +40,13 @@ for (let i = 0; i < 7; i++) {
     /* Récupération de la réponse de l'API (sous forme d'une chaine de caractéres) */
 
     let catImg = await get_cat_object()
-
-    /* Formatage de la chaine de caractés, on retire les crochets non-interprêtables, et on convertit ce qui reste en objet JSON */
-
-    let catImgReplace1 = catImg.replace("[", "")
-    let catImgReplace2 = catImgReplace1.replace("]", "")
-    let catObject = JSON.parse(catImgReplace2)
-    console.log(catObject)
+  
+    let result = JSON.parse(catImg)
 
     /* Pour chaque image, créer une balise img, et y attribuer comme src l'url récupérée de l'API */
 
     let baliseImg = document.createElement("img")
-    baliseImg.setAttribute("src", catObject.url)
+    baliseImg.setAttribute("src", result[0].url)
     ruche.appendChild(baliseImg)
 
 }
